@@ -46,9 +46,9 @@ pca_ggplot(
 
 \item{save_image_path}{An optional filepath where the image will be saved.}
 
-\item{width}{If the image is saved, the width of the saved image. Default is 9 inches}
+\item{width}{If the image is saved, the width of the saved image. Default is 9 inches.}
 
-\item{height}{If the image is saved, the height of the saved image. Default is 9 inches}
+\item{height}{If the image is saved, the height of the saved image. Default is 9 inches.}
 }
 \value{
 A ggplot object

@@ -53,7 +53,7 @@ customize_ggplot_theme(
 
 \item{axis_text_size}{Size of the axes text in pts. Default is 18.}
 
-\item{x_labels}{Optional abels to use for the x-axis}
+\item{x_labels}{Optional labels to use for the x-axis}
 
 \item{format_x_labels}{Logical value indicating whether to format the X axis labels by replacing "_" with a space and using title case. Default is FALSE.}
 

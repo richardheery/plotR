@@ -7,10 +7,11 @@
 scree_plot(
   pca,
   number_of_pcs = 10,
+  cumulative = FALSE,
   title = NULL,
   xlab = NULL,
   ylab = NULL,
-  rotate_x_tick_labels = F,
+  rotate_x_tick_labels = FALSE,
   colour_palette = "Oranges"
 )
 }
@@ -18,6 +19,8 @@ scree_plot(
 \item{pca}{A prcomp or princomp object}
 
 \item{number_of_pcs}{Number of PCs to display in the plot. Default is 10 or the total number of PCs, whichever is smaller.}
+
+\item{cumulative}{Logical value indicating whether to show cumulative percentage of variation explained by PCs. Default is FALSE.}
 
 \item{title}{Title for the plot. Default is "Percentage of Variance Explained by Top \code{number_of_pcs} PCs".}
 

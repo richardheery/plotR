@@ -19,6 +19,7 @@ heatmap_without_clustering(
   label_size = 15,
   number_size = 18,
   filename = NA,
+  file_dimensions = c(6, 6),
   return_ggplot = F
 )
 }
@@ -51,6 +52,9 @@ Can also just supply a single colour and it will be interpolated using colorRamp
 \item{number_size}{Fontsize for numbers. Default is 18.}
 
 \item{filename}{Optional filename to save plot with.}
+
+\item{file_dimensions}{A vector of length two with the width and height of the file in inches.
+Default is a width of 6 and height of 6.}
 
 \item{return_ggplot}{A logical value indicating whether the heatmap should be returned as a ggplot object}
 }
