@@ -121,8 +121,8 @@ pca_ggplot = function(pca, PCs = c(1, 2), sample_subset = NULL, colour_groups = 
     labs(colour = colour_legend_title, shape = shape_legend_title) +
     theme_classic() +
     ggtitle(title) +
-    theme(plot.title = element_text(hjust = 0.5, face = "bold", size = 24), axis.text=element_text(size = 18), 
-      axis.title=element_text(size = 20), legend.text = element_text(size = 18)) 
+    theme(plot.title = element_text(hjust = 0.5, size = 24), axis.text=element_text(size = 18), 
+      axis.title=element_text(size = 20), legend.title = element_text(size = 20), legend.text = element_text(size = 18)) 
     if(is.null(colour_groups) & is.null(shape_groups)){pca_plot = pca_plot + theme(legend.position = "None")} 
     if(is.null(shape_groups)){pca_plot = pca_plot + guides(shape = "none")} 
     if(is.null(colour_groups)){pca_plot = pca_plot + guides(color = "none")}
