@@ -84,14 +84,15 @@ scree_plot = function(pca, number_of_pcs = 10, cumulative = FALSE, title = NULL,
 #' @param title A title for the plot. Default is no title. 
 #' @param colour_legend_title The title of the colour legend for the plot. Default is no title. 
 #' @param shape_legend_title The title of the shape legend for the plot. Default is no title. 
-#' @param alpha Alpha value for the points
+#' @param point_size = Size of the points. Default is 1.
+#' @param alpha Alpha value for the points. Default is 1.
 #' @param save_image_path An optional filepath where the image will be saved.
 #' @param width If the image is saved, the width of the saved image. Default is 9 inches.
 #' @param height If the image is saved, the height of the saved image. Default is 9 inches.
 #' @return A ggplot object
 #' @export
 pca_ggplot = function(pca, PCs = c(1, 2), sample_subset = NULL, colour_groups = NULL, colours = NULL, shape_groups = NULL, labels = NULL, 
-  title = NULL, colour_legend_title = NULL, shape_legend_title = NULL, alpha = 1, save_image_path = NULL, width = 9, height = 9){
+  title = NULL, colour_legend_title = NULL, shape_legend_title = NULL, point_size = 1, alpha = 1, save_image_path = NULL, width = 9, height = 9){
   
   # If colour_groups is not a character or factor, it will be converted to one
   if(!is(colour_groups, "factor")){colour_groups = factor(colour_groups)}
@@ -111,8 +112,8 @@ pca_ggplot = function(pca, PCs = c(1, 2), sample_subset = NULL, colour_groups = 
   if(!is.null(labels)){pca_data$labels = labels}
   pca_var_per <- round(pca$sdev ^ 2 / sum(pca$sdev^2) * 100, 1)
   pca_plot = ggplot(data = pca_data, aes(x = X, y = Y, label = labels, color = colours, shape = shape_vec)) + 
-    {if(is.null(labels)){geom_point(alpha = alpha)}} + 
-    {if(!is.null(labels)){geom_text(show.legend = FALSE, alpha = alpha)}} +
+    {if(is.null(labels)){geom_point(alpha = alpha, size = point_size)}} + 
+    {if(!is.null(labels)){geom_text(show.legend = FALSE, alpha = alpha, size = point_size)}} +
     {if(!is.null(labels)){geom_point(alpha = 0)}} +
     {if(!is.null(labels)){guides(colour = guide_legend(override.aes = list(alpha=1)))}} +
     xlab(paste(colnames(pca$x)[PCs[1]], " - ", pca_var_per[PCs[1]], "%", sep="")) + 
@@ -120,8 +121,8 @@ pca_ggplot = function(pca, PCs = c(1, 2), sample_subset = NULL, colour_groups = 
     labs(colour = colour_legend_title, shape = shape_legend_title) +
     theme_classic() +
     ggtitle(title) +
-    theme(plot.title = element_text(hjust = 0.5, face = "bold", size = 24), axis.text=element_text(size = 20), 
-      axis.title=element_text(size = 18)) 
+    theme(plot.title = element_text(hjust = 0.5, face = "bold", size = 24), axis.text=element_text(size = 18), 
+      axis.title=element_text(size = 20), legend.text = element_text(size = 18)) 
     if(is.null(colour_groups) & is.null(shape_groups)){pca_plot = pca_plot + theme(legend.position = "None")} 
     if(is.null(shape_groups)){pca_plot = pca_plot + guides(shape = "none")} 
     if(is.null(colour_groups)){pca_plot = pca_plot + guides(color = "none")}
